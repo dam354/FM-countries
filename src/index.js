@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './tailwind.generated.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { ThemeContextProvider } from './ThemeContext';
+import { CountriesContextProvider } from './CountriesContext';
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ThemeContextProvider>
+    <CountriesContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </CountriesContextProvider>
+  </ThemeContextProvider>,
   document.getElementById('root')
 );
 
