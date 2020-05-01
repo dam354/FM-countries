@@ -6,7 +6,6 @@ const CountriesContext = React.createContext();
 
 const CountriesContextProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('');
   const [selectFilter, setSelectFilter] = useState('All');
 

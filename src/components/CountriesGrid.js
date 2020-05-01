@@ -44,7 +44,7 @@ const CountriesGrid = () => {
   // });
 
   return (
-    <div className="pt-10 bg-appbg">
+    <div className="pt-10 pb-10 bg-appbg">
       <Container>
         <div className=" w-full grid gap-8	 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
           {promiseInProgress === true ? (

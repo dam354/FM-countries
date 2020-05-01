@@ -51,6 +51,7 @@ const SearchInputs = () => {
             <div className="absolute left-0 pl-3 flex items-center justify-center pointer-events-none text-inputtext inset-y-0">
               <FontAwesomeIcon icon={faSearch} />
             </div>
+
             <input
               className="  bg-headerbg focus:outline-none rounded  py-3 px-4  leading-tight focus:outline-none 
           text-inputtext pl-10 w-full h-full
@@ -59,6 +60,7 @@ const SearchInputs = () => {
               placeholder="Search for a country..."
               onChange={(e) => setSearchTerm(e.target.value)}
               type="text"
+              id="Search"
             />
             {clearInput}
           </div>
