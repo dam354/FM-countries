@@ -2,11 +2,46 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CountriesContext } from '../CountriesContext';
 import Container from './Container';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDebounce } from '../hooks/useDebounce';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import _ from 'lodash';
 
 const SearchInputs = () => {
-  const { input, handleInput } = useContext(CountriesContext);
+  const { setFilter, setSelectFilter } = useContext(CountriesContext);
+  const [select, setSelect] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 200);
+
+  useEffect(
+    () => {
+      if (debouncedSearchTerm) {
+        console.log('noe', searchTerm);
+        setFilter(searchTerm);
+      } else {
+        setFilter([]);
+      }
+    },
+    [debouncedSearchTerm] // Only call effect if debounced search term changes
+  );
+
+  const handleSelect = (e) => {
+    console.log(e.target.value);
+    setSelect(e.target.value);
+    setSelectFilter(e.target.value);
+  };
+
+  const clearInput =
+    searchTerm.length > 0 ? (
+      <div
+        onClick={() => {
+          setSearchTerm('');
+        }}
+        className="absolute right-0 pr-3 flex items-center justify-center  text-inputtext inset-y-0"
+      >
+        <FontAwesomeIcon icon={faTimes} />
+      </div>
+    ) : null;
 
   return (
     <div className="pt-10">
@@ -20,20 +55,26 @@ const SearchInputs = () => {
               className="  bg-headerbg focus:outline-none rounded  py-3 px-4  leading-tight focus:outline-none 
           text-inputtext pl-10 w-full h-full
           "
+              value={searchTerm}
               placeholder="Search for a country..."
-              value={input}
-              onChange={handleInput}
+              onChange={(e) => setSearchTerm(e.target.value)}
               type="text"
             />
+            {clearInput}
           </div>
           <div className="w-full pt-10 sm:pt-0 sm:w-64">
             <div className=" relative ">
-              <select className="block appearance-none w-full bg-headerbg text-inputtext px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                <option>Africa</option>
-                <option>Americas</option>
-                <option>Asia</option>
-                <option>Europe</option>
-                <option>Oceania</option>
+              <select
+                value={select}
+                onChange={handleSelect}
+                className="block appearance-none w-full bg-headerbg text-inputtext px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              >
+                <option value="All">All</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
               </select>
               <div className="pointer-events-none text-inputtext absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
