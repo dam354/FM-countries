@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
 import { CountriesContext } from '../CountriesContext';
 import Container from './Container';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
+import Img from 'react-image';
+
 const CountryDetail = () => {
   const { countries } = useContext(CountriesContext);
   const { country } = useParams();
@@ -72,7 +73,7 @@ const CountryDetail = () => {
 
           <div className="flex mt-10 flex-col md:flex-row justify-between">
             <div className="w-full md:w-1/2">
-              <img
+              <Img
                 src={flag}
                 className="shadow w-full md:w-full mx-auto"
                 alt=""

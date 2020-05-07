@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Header from './components/Header';
 import SearchInputs from './components/SearchInputs';
 import CountriesGrid from './components/CountriesGrid';
-import Footer from './components/Footer';
+
 import { ThemeContext } from './ThemeContext';
 
 import { Switch, Route } from 'react-router-dom';

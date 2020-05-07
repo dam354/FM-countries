@@ -16,7 +16,7 @@ const SearchInputs = () => {
 
   useEffect(() => {
     setSelect(selectFilter);
-  }, []);
+  }, [selectFilter]);
 
   useEffect(
     () => {
@@ -26,7 +26,7 @@ const SearchInputs = () => {
         setFilter([]);
       }
     },
-    [debouncedSearchTerm] // Only call effect if debounced search term changes
+    [debouncedSearchTerm, setFilter, searchTerm] // Only call effect if debounced search term changes
   );
 
   const handleSelect = (e) => {

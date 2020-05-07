@@ -11,16 +11,16 @@ const CountriesGrid = () => {
 
   const countriesFiltered = countries
     .filter((country) => {
-      if (selectFilter == 'All') return country;
+      if (selectFilter === 'All') return country;
 
-      if (country.region == selectFilter) {
+      if (country.region === selectFilter) {
         return country;
       } else {
         return null;
       }
     })
     .filter((country) => {
-      if (filter == '') return country;
+      if (filter === '') return country;
       if (country.name.toLowerCase().includes(filter.toLowerCase())) {
         return country;
       } else {

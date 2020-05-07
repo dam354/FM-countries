@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { popFormat } from '../utils/helper';
-import { usePromiseTracker } from 'react-promise-tracker';
 import { Link } from 'react-router-dom';
-const CountryCard = ({ country }) => {
+
+import Img from 'react-image';
+const CountryCar = ({ country }) => {
   const {
     name,
     flag = `https://via.placeholder.com/330x150`,
@@ -18,7 +19,7 @@ const CountryCard = ({ country }) => {
         whileHover={{ scale: 1.075 }}
         className="rounded shadow bg-headerbg  "
       >
-        <img src={flag} className="rounded-t" alt="" />
+        <Img src={flag} className="rounded-t" alt="" />
         <div className="px-6 py-8 text-headercolor  ">
           <h4 className="font-body text-headercolor   text-lg font-extrabold pb-4">
             {name}
