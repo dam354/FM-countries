@@ -5,18 +5,22 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDebounce } from '../hooks/useDebounce';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import _ from 'lodash';
 
 const SearchInputs = () => {
-  const { setFilter, setSelectFilter } = useContext(CountriesContext);
-  const [select, setSelect] = useState('All');
+  const { setFilter, setSelectFilter, selectFilter } = useContext(
+    CountriesContext
+  );
+  const [select, setSelect] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 200);
+
+  useEffect(() => {
+    setSelect(selectFilter);
+  }, []);
 
   useEffect(
     () => {
       if (debouncedSearchTerm) {
-        console.log('noe', searchTerm);
         setFilter(searchTerm);
       } else {
         setFilter([]);
@@ -26,7 +30,6 @@ const SearchInputs = () => {
   );
 
   const handleSelect = (e) => {
-    console.log(e.target.value);
     setSelect(e.target.value);
     setSelectFilter(e.target.value);
   };
@@ -44,7 +47,7 @@ const SearchInputs = () => {
     ) : null;
 
   return (
-    <div className="pt-10">
+    <div className="pt-32">
       <Container>
         <div className="flex justify-between flex-col sm:flex-row md:flex-row lg:flex:row">
           <div className="relative rounded shadow w-full  sm:w-64">

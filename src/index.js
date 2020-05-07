@@ -5,14 +5,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeContextProvider } from './ThemeContext';
 import { CountriesContextProvider } from './CountriesContext';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 ReactDOM.render(
-  <ThemeContextProvider>
-    <CountriesContextProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </CountriesContextProvider>
-  </ThemeContextProvider>,
+  <Router>
+    <ThemeContextProvider>
+      <CountriesContextProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </CountriesContextProvider>
+    </ThemeContextProvider>
+  </Router>,
   document.getElementById('root')
 );
 

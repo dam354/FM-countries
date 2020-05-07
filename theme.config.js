@@ -9,6 +9,7 @@ const mainTheme = new Theme().default().colors({
   inputs: 'hsl(0, 0%, 100%)',
   inputtext: 'hsl(0, 0%, 52%)',
   shadows: '#efefef',
+  buttonhover: '#E6E6E6',
 });
 const lightTheme = new Theme().colors({
   headerbg: 'hsl(0, 0%, 100%)',
@@ -18,7 +19,9 @@ const lightTheme = new Theme().colors({
   inputs: 'hsl(0, 0%, 100%)',
   inputtext: 'hsl(0, 0%, 52%)',
   shadows: '#efefef',
+  buttonhover: '#E6E6E6',
 });
+
 const darkTheme = new Theme().colors({
   headerbg: 'hsl(209, 23%, 22%)',
   headercolor: 'hsl(0, 0%, 100%)',
@@ -27,6 +30,7 @@ const darkTheme = new Theme().colors({
   inputs: 'hsl(209, 23%, 22%)',
   inputtext: `hsl(0, 0%, 100%)`,
   shadows: '#1e2b34',
+  buttonhover: '#45535F',
 });
 
 module.exports = new ThemeBuilder()

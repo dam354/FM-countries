@@ -7,12 +7,12 @@ import { usePromiseTracker } from 'react-promise-tracker';
 const CountriesGrid = () => {
   const { promiseInProgress } = usePromiseTracker();
   const { countries, filter, selectFilter } = useContext(CountriesContext);
-  console.log('this is', filter);
+  // console.log('this is', filter);
 
   const countriesFiltered = countries
     .filter((country) => {
       if (selectFilter == 'All') return country;
-      console.log('selectFilter', selectFilter);
+
       if (country.region == selectFilter) {
         return country;
       } else {

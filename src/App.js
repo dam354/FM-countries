@@ -5,13 +5,24 @@ import CountriesGrid from './components/CountriesGrid';
 import Footer from './components/Footer';
 import { ThemeContext } from './ThemeContext';
 
+import { Switch, Route } from 'react-router-dom';
+import CountryDetail from './components/CountryDetail';
+
 function App() {
   const { theme } = useContext(ThemeContext);
   return (
-    <div className="  bg-appbg h-screen " data-theme={theme}>
+    <div className="font-body  bg-appbg h-screen " data-theme={theme}>
       <Header />
-      <SearchInputs />
-      <CountriesGrid />
+
+      <Switch>
+        <Route path="/countries/:country">
+          <CountryDetail />
+        </Route>
+        <Route exact path="/">
+          <SearchInputs />
+          <CountriesGrid />
+        </Route>
+      </Switch>
     </div>
   );
 }
