@@ -4,7 +4,7 @@ import { popFormat } from '../utils/helper';
 import { Link } from 'react-router-dom';
 
 import Img from 'react-image';
-const CountryCar = ({ country }) => {
+const CountryCard = ({ country }) => {
   const {
     name,
     flag = `https://via.placeholder.com/330x150`,
