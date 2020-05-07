@@ -21,7 +21,12 @@ const CountriesGrid = () => {
     })
     .filter((country) => {
       if (filter === '') return country;
-      if (country.name.toLowerCase().includes(filter.toLowerCase())) {
+      if (
+        country.name
+          .toString()
+          .toLowerCase()
+          .includes(filter.toString().toLowerCase())
+      ) {
         return country;
       } else {
         return null;
